@@ -1,5 +1,6 @@
 # Modules
 import csv
+import os
 
 # Initialize the variables 
 total_months = 0
@@ -38,11 +39,20 @@ with open('C:/Users/tasee/OneDrive/Desktop/bootcamp/DATA-PT-EAST-JULY-071524/Hom
 # Calculate the average change
 average_change = sum(changes) / len(changes)
 
-# Print the analysis results
-print("Financial Analysis")
-print("----------------------------")
-print(f"Total Months: {total_months}")
-print(f"Total: ${net_total}")
-print(f"Average Change: ${average_change:.2f}")
-print(f"Greatest Increase in Profits: {greatest_increase_date} (${greatest_increase})")
-print(f"Greatest Decrease in Profits: {greatest_decrease_date} (${greatest_decrease})")
+# Exporting file into a text file
+file_to_output = os.path.join("budget_analysis.txt") 
+output = (
+    f"Financial Analysis\n"
+    f"----------------------------\n"
+    f"Total Months: {total_months}\n"
+    f"Total: ${net_total}\n"
+    f"Average Change: ${average_change:.2f}\n"
+    f"Greatest Increase in Profits: {greatest_increase_date} (${greatest_increase})\n"
+    f"Greatest Decrease in Profits: {greatest_decrease_date} (${greatest_decrease})\n")
+
+# Print the output (to terminal)
+print(output)
+
+# Export the results to text file
+with open(file_to_output, "w") as txt_file:
+    txt_file.write(output)
